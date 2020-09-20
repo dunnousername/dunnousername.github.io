@@ -6,7 +6,7 @@ I wrote [first-order-wrapper](https://github.com/dunnousername/yanderifier) over
 First-order-model is a machine learning algorithm that takes a video of a face and an image of a different face, and reanimates the still image to match the movement in the video.
 As a visual example, here's an animation from the creators of first-order-model itself (this is theirs, not mine):
 
-![Courtesy of first-order-model developers](https://aliaksandrsiarohin.github.io/first-order-model-website/vox-teaser.gif)
+![Courtesy of first-order-model developers](https://raw.githubusercontent.com/AliaksandrSiarohin/first-order-model/master/sup-mat/absolute-demo.gif)
 
 This is obviously really cool, but it's academic code. The developers are data scientists, not programmers, so while the results are extremely impressive, the program isn't exactly the easiest to use.
 
