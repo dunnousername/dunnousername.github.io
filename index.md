@@ -1,37 +1,9 @@
-## Welcome to GitHub Pages
+## Welcome to my site!
 
-You can use the [editor on GitHub](https://github.com/dunnousername/dunnousername.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+I'm dunnousername. Hello!
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+I do many interesting things. At least, *I* believe they are interesting. Currently, most of my projects are in data science and machine learning.
+You can find my list of projects [here](projects.md). I also have a [GitHub account](https://github.com/dunnousername) where a lot of the code I write is stored.
 
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/dunnousername/dunnousername.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+One of my goals is to get the power of machine learning into the hands of as many people as possible. It's really neat, after all!
+That is why I wrote [first-order-wrapper](first-order-wrapper.md). Most people know about me from that project, since it's (as of the time of this writing) the most popular project I've ever written, with over 600 stars and 100 forks! However, I do lots of other interesting stuff, so make sure to check out my other projects!
