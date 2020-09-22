@@ -84,8 +84,31 @@ What does `AUG_PROB` mean? Well, here's some info about it in the Colab notebook
 But what does it do? Well, at this point I realized I wasn't entirely sure. It's a setting that comes from the fork of StyleGAN2 with augmentations. I didn't really understand what augmentations were, and assume it didn't really matter, but if you don't know what your tools do, you can't use them effectively. So, it's very likely that these variables have a greater significance than I thought they did.
 
 Gwern is a really interesting guy. I've learned a lot about StyleGAN2 from his blog (which I liked so much I thought I'd start my own blog in a similar format), and he's done several projects which sparked my interest for machine learning and data science. I highly recommend you go check out his blog if you like what you're seeing here.
-Anyway, Gwern wrote this [really in-depth comment](https://github.com/tensorfork/tensorfork/issues/35) that explains augmentations pretty well.
+Anyway, Gwern wrote this [really in-depth comment](https://github.com/tensorfork/tensorfork/issues/35) that explains augmentations pretty well. I'll summarize the relevant bits here.
 
 GANs (including StyleGAN/StyleGAN2) take an interesting approach to image generation. There are two networks - a generator, which creates fake images, and a discriminator, which tries to discern whether an image is real or fake. The discriminator gets a few images - some from our dataset of real spiders, and some from the generator's outputs. It'll output a confidence value (is this a real image?) for each input, and then it'll be trained ("here's what you did right, here's what you did wrong, and here is the correct answer" in an less scientific sense) so that it improves. At the same time, the generator will be trained; if it fools the discriminator, it'll get "rewarded", and if it fails, it'll have to adapt to make more realistic images. This battle between the two networks makes them compete between each other and get better until it is hard for a human to discern a real image or a fake image.
+
+This means that the generator isn't directly trained on the real images - instead, it tries to replicate what the discriminator sees as real input.
+
+Normally, this wouldn't matter much. However, we are working with augmentations. Augmentations are a way to raise the number of real images the discriminator sees without making a bigger dataset. For example, you can mirror each image, and now you have twice the dataset!
+
+However, it isn't all that simple. If you only augment the real inputs, then the generator will try to replicate the distortion. Luckily, this is done for both inputs with the colab as far as I can tell. Still, some augmentations aren't helpful in our case. There are several augmentations, which I'll look at one by one.
+
+- `color` is an augment that slightly changes the color. Spiders are colorful so we can probably leave this one in.
+- `brightness` is an augment that changes the brightness. This is probably fine.
+- `batchcutout` places a black square over a random part of the image. Spiders are often black, so we definitely don't want this!
+- `mirrorh` mirrors an image left-right. We're already using `--mirror-augment`, and spiders are symmetrical, so we want this to "bleed through". In other words, only apply it to the real inputs (which `--mirror-augment` does) so that the generator learns that spiders are symmetrical when trying to fake the discriminator.
+- `mirrorv` mirrors an image up-down. Some of our inputs images look like the bottom-center spider in the "real spiders" image above, so we wouldn't want to mirror them vertically.
+- `cutmix` blends input images together. This won't really make sense since the spider images can be very different.
+
+It was also recommended that I increase the augmentation probability slightly. So, our new command looks like this:
+```
+!AUG_PROB=0.7 AUG_POLICY='color,brightness' python run_training.py --num-gpus=1 --mirror-augment=True 
+--data-dir=/content/drive/My\ Drive/stylegan2-aug-colab/stylegan2/datasets 
+--dataset=buggan_tf256_3 --config=config-f  --res-log=8 --min-h=1 --min-w=1 --resume-pkl=$pkl
+--resume-kimg=$resume_kimg --augmentations=True --metrics=None
+```
+
+At first I also thought that `--resume-kimg=$resume_kimg` could be an issue. Earlier versions of StyleGAN(1) were progressive, meaning the kimg count would determine how the model was trained. However, this isn't the case with StyleGAN2's `config-f`.
 
 (to be continued)
