@@ -2,7 +2,10 @@
 
 I'm dunnousername. Hello!
 
-I do many interesting things. At least, *I* believe they are interesting. Currently, most of my projects are in data science and machine learning.
+My real name is Henry, but most of my projects are tied to the username/pseudonym "dunnousername." As of the time of this writing (9/22/2020), I'm a high school senior living on the east coast of the United States.
+
+I do many interesting things. Currently, most of my projects are in data science and machine learning, and those are also the fields I intend to major in. I'm really passionate about these things, and I want other people to enjoy them as well! I wrote a few projects intended to get people interested in ML, and this blog serves as a more in-depth resource on what I'm up to these days.
+
 You can find my list of projects [here](projects.md). I also have a [GitHub account](https://github.com/dunnousername) where a lot of the code I write is stored.
 
 One of my goals is to get the power of machine learning into the hands of as many people as possible. It's really neat, after all!
