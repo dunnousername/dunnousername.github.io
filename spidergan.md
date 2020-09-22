@@ -1,3 +1,5 @@
+[(back to projects)](projects.md)
+
 ## This is a work in progress!
 
 ![SpiderGAN](spidergan.png)
