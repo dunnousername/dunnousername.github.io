@@ -62,3 +62,30 @@ For comparison, here are the real ones, [courtesy of the Flickr Spiders group](h
 Notice the caterpillar-like image in the fakes. Also, a lot of the images looked similar to the reals; was that normal, or was it memorizing the inputs? There were only 2000 training images after all, and it had seen each of them nearly 1000 times. Also, it would often get confused when there were spiderwebs in the image.
 
 Both of these issues made me reconsider my dataset. I'm currently experimenting with U^2-Net to mask off the background of the images to solve the web issue, and also to make it not waste time memorizing the background. Additionally, I might make my dataset larger. I was originally going to use 10,000 images, but 2,000 worked fine, so I decided to not worry about dataset size, but that might be more important than I thought.
+
+## A "small" point of reflection
+
+These sorts of projects are always experimental. It's all about trial and error - *lots* of trials and *lots* of errors. This means it is quite necessary to take the time and reflect on parts of your experiments that you might have overlooked.
+
+This is the command I used to do training:
+```
+!AUG_PROB=0.5 python run_training.py --num-gpus=1 --mirror-augment=True 
+--data-dir=/content/drive/My\ Drive/stylegan2-aug-colab/stylegan2/datasets 
+--dataset=buggan_tf256_3 --config=config-f  --res-log=8 --min-h=1 --min-w=1 --resume-pkl=$pkl
+--resume-kimg=$resume_kimg --augmentations=True --metrics=None
+```
+
+There's not much special about it. Most of it is just the same command that I started with on dvs's colab. The most important change is setting `AUG_PROB` to 0.5 instead of 0.2.
+
+What does `AUG_PROB` mean? Well, here's some info about it in the Colab notebook:
+> The default is 0.1. If you have a small training set you may want to go higher than that but note that the Karras paper does say if you set this value too high you may find it bleeds into the outputs.
+(I'm pretty sure the default value is actually 0.2, by the way).
+
+But what does it do? Well, at this point I realized I wasn't entirely sure. It's a setting that comes from the fork of StyleGAN2 with augmentations. I didn't really understand what augmentations were, and assume it didn't really matter, but if you don't know what your tools do, you can't use them effectively. So, it's very likely that these variables have a greater significance than I thought they did.
+
+Gwern is a really interesting guy. I've learned a lot about StyleGAN2 from his blog (which I liked so much I thought I'd start my own blog in a similar format), and he's done several projects which sparked my interest for machine learning and data science. I highly recommend you go check out his blog if you like what you're seeing here.
+Anyway, Gwern wrote this [really in-depth comment](https://github.com/tensorfork/tensorfork/issues/35) that explains augmentations pretty well.
+
+GANs (including StyleGAN/StyleGAN2) take an interesting approach to image generation. There are two networks - a generator, which creates fake images, and a discriminator, which tries to discern whether an image is real or fake. The discriminator gets a few images - some from our dataset of real spiders, and some from the generator's outputs. It'll output a confidence value (is this a real image?) for each input, and then it'll be trained ("here's what you did right, here's what you did wrong, and here is the correct answer" in an less scientific sense) so that it improves. At the same time, the generator will be trained; if it fools the discriminator, it'll get "rewarded", and if it fails, it'll have to adapt to make more realistic images. This battle between the two networks makes them compete between each other and get better until it is hard for a human to discern a real image or a fake image.
+
+(to be continued)
