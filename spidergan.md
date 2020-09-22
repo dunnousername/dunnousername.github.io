@@ -24,7 +24,7 @@ This is where SpiderGAN really started taking shape.
 > What I learned: the most obvious dataset source might not be the best. Reddit provides structured data and a convenient API, but Flickr was orders of magnitude better.
 
 ## Finding spiders
-After gather all 44,000 images from Flickr using their API and [this awesome script](https://github.com/antiboredom/flickr-scrape), I set out to make a YoloV3 model.
+After gather all 44,000 images from Flickr using their API and [this awesome script](https://github.com/antiboredom/flickr-scrape), I set out to make a YoloV3 model using [this repo, out of fear for compiling the Darknet version](https://github.com/AntonMu/TrainYourOwnYOLO).
 YoloV3 is a real-time object detection model that requires around a hundred labeled images in order to produce decent results.
 
 Originally, I labeled 100 images, but didn't select the bounding boxes correctly. I would select the legs if they were easy to spot and weren't too big, and I'd select the "center" of the spider if the legs were too large or very thin.
@@ -41,4 +41,24 @@ Eventually, the model worked pretty well, and I started using it to crop images.
 > When the YoloV3 model provided bounding boxes around a spider, they were usually pretty good. However, it would often include a bad bounding box, sometimes more than one bad bounding box, alongside or in place of the desired bounding box.
 > What I learned: under no circumstances should you blindly take the output of one AI and train another AI with it without reviewing the output first.
 
-Originally, I took 1,217 cropped images and started training StyleGAN2. I used dvs' colab environment, which can be found [here](https://github.com/dvschultz/ai/blob/master/StyleGAN2_Augmentations.ipynb). Afterwards, I increased this to 2,000 images.
+Originally, I took 1,217 cropped images and started training StyleGAN2. I used dvs' colab environment, which can be found [here](https://github.com/dvschultz/ai/blob/master/StyleGAN2_Augmentations.ipynb). Afterwards, I increased this to 2,000 images. I transfer-learned from the official StyleGAN2 256x256 cats config-f model, mostly since this was a 256x256 model, and not enough of my images had an effective resolution higher than that which would warrant the expense of training a larger model. On colab, I was able to train with gpu-base size of 16 images at a minibatch of 32 images, on 16GB V100 and P100 cards.
+
+After a few days of training, at just under 2000 kimg, my results looked this:
+<details>
+  <summary>Click to view some fake spiders</summary>
+  
+  ![Almost 2000kimg](spidergan_fakes011978.jpg)
+  
+</details>
+
+For comparison, here are the real ones:
+<details>
+  <summary>Click to view some real spiders</summary>
+  
+  ![Real spiders](spidergan_reals.jpg)
+  
+</details>
+
+Notice the caterpillar-like image in the fakes. Also, a lot of the images looked similar to the reals; was that normal, or was it memorizing the inputs? There were only 2000 training images after all, and it had seen each of them nearly 1000 times. Also, it would often get confused when there were spiderwebs in the image.
+
+Both of these issues made me reconsider my dataset. I'm currently experimenting with U^2-Net to mask off the background of the images to solve the web issue, and also to make it not waste time memorizing the background. Additionally, I might make my dataset larger. I was originally going to use 10,000 images, but 2,000 worked fine, so I decided to not worry about dataset size, but that might be more important than I thought.
