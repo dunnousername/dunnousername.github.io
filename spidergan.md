@@ -101,6 +101,10 @@ However, it isn't all that simple. If you only augment the real inputs, then the
 - `mirrorv` mirrors an image up-down. Some of our inputs images look like the bottom-center spider in the "real spiders" image above, so we wouldn't want to mirror them vertically.
 - `cutmix` blends input images together. This won't really make sense since the spider images can be very different.
 
+Here's a visual example from that GitHub issue (some of these don't apply or have different names):
+
+![augment types](https://user-images.githubusercontent.com/352559/83973591-945ea900-a8b5-11ea-81cd-e93b84efcbdb.png)
+
 It was also recommended that I increase the augmentation probability slightly. So, our new command looks like this:
 ```
 !AUG_PROB=0.7 AUG_POLICY='color,brightness' python run_training.py --num-gpus=1 --mirror-augment=True 
