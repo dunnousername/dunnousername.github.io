@@ -94,6 +94,8 @@ Normally, this wouldn't matter much. However, we are working with augmentations.
 
 However, it isn't all that simple. If you only augment the real inputs, then the generator will try to replicate the distortion. Luckily, this is done for both inputs with the colab as far as I can tell. Still, some augmentations aren't helpful in our case. There are several augmentations, which I'll look at one by one.
 
+There are some augments applied batchwise:
+
 - `color` is an augment that slightly changes the color. Spiders are colorful so we can probably leave this one in.
 - `brightness` is an augment that changes the brightness. This is probably fine.
 - `batchcutout` places a black square over a random part of the image. Spiders are often black, so we definitely don't want this!
@@ -101,13 +103,19 @@ However, it isn't all that simple. If you only augment the real inputs, then the
 - `mirrorv` mirrors an image up-down. Some of our inputs images look like the bottom-center spider in the "real spiders" image above, so we wouldn't want to mirror them vertically.
 - `cutmix` blends input images together. This won't really make sense since the spider images can be very different.
 
+There are also others applied individually to images:
+
+- `zoomin`, `zoomout` and `randomzoom` zoom into an image. We probably don't want to mess with these since we want the size of the spider to stay the same.
+- `xtrans`, `ytrans` and `xytrans` pan around an image. This is probably fine since they won't affect it enough to cause issues.
+- `cutout` puts a block square over a random part of a single image. We definitely don't want that since spiders are black.
+
 Here's a visual example from that GitHub issue (some of these don't apply or have different names):
 
 ![augment types](https://user-images.githubusercontent.com/352559/83973591-945ea900-a8b5-11ea-81cd-e93b84efcbdb.png)
 
 It was also recommended that I increase the augmentation probability slightly. So, our new command looks like this:
 ```
-!AUG_PROB=0.7 AUG_POLICY='color,brightness' python run_training.py --num-gpus=1 --mirror-augment=True 
+!AUG_PROB=0.7 AUG_POLICY='color,brightness,xtrans,ytrans,xytrans' python run_training.py --num-gpus=1 --mirror-augment=True 
 --data-dir=/content/drive/My\ Drive/stylegan2-aug-colab/stylegan2/datasets 
 --dataset=buggan_tf256_3 --config=config-f  --res-log=8 --min-h=1 --min-w=1 --resume-pkl=$pkl
 --resume-kimg=$resume_kimg --augmentations=True --metrics=None
