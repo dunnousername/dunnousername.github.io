@@ -47,7 +47,7 @@ After a few days of training, at just under 2000 kimg, my results looked this:
 <details>
   <summary>Click to view some fake spiders</summary>
   
-  ![Almost 2000kimg](spidergan_fakes011978.jpg)
+  <img src="spidergan_reals.jpg" alt="almost 2000 kimg" />
   
 </details>
 
@@ -55,7 +55,7 @@ For comparison, here are the real ones, [courtesy of the Flickr Spiders group](h
 <details>
   <summary>Click to view some real spiders</summary>
   
-  ![Real spiders](spidergan_reals.jpg)
+  <img src="spidergan_reals.jpg" alt="real spiders" />
   
 </details>
 
