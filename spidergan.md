@@ -51,7 +51,7 @@ After a few days of training, at just under 2000 kimg, my results looked this:
   
 </details>
 
-For comparison, here are the real ones:
+For comparison, here are the real ones, [courtesy of the Flickr Spiders group](https://www.flickr.com/groups/spiders/):
 <details>
   <summary>Click to view some real spiders</summary>
   
