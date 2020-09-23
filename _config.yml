@@ -1,4 +1,5 @@
 title: "dunnousername"
+description: "This is the site of Henry Leonard. In this site are my projects in the fields of data science, machine learning, and computer programming."
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-relative-links
