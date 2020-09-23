@@ -1,12 +1,12 @@
 ## Welcome to my site!
 
-I'm dunnousername. Hello!
+I'm Henry, a tinkerer, neural network enthusiast, and future data scientist. Hello!
 
-My real name is Henry, but most of my projects are tied to the username/pseudonym "dunnousername." As of the time of this writing (9/22/2020), I'm a high school senior living on the east coast of the United States.
+My real name is Henry, but many of my projects are tied to the alias "dunnousername." This alias is tied to my open source projects and for technical reasons (broken links are bad) I likely won't be (and can't be) changing it. As of the time of this writing (9/22/2020), I'm a high school senior living on the east coast of the United States.
 
 I do many interesting things. Currently, most of my projects are in data science and machine learning, and those are also the fields I intend to major in. I'm really passionate about these things, and I want other people to enjoy them as well! I wrote a few projects intended to get people interested in ML, and this blog serves as a more in-depth resource on what I'm up to these days.
 
 You can find my list of projects [here](projects.md). I also have a [GitHub account](https://github.com/dunnousername) where a lot of the code I write is stored.
 
 One of my goals is to get the power of machine learning into the hands of as many people as possible. It's really neat, after all!
-That is why I wrote [first-order-wrapper](first-order-wrapper.md). Most people know about me from that project, since it's (as of the time of this writing) the most popular project I've ever written, with over 600 stars and 100 forks! However, I do lots of other interesting stuff, so make sure to check out my other projects!
+That is why I wrote [first-order-wrapper](first-order-wrapper.md), which isn't as interesting as my other projects, but might be easier to understand. Most people know about me from that project, since it's (as of the time of this writing) the most popular project I've ever written, with over 600 stars and 100 forks! However, I do lots of other interesting stuff, so make sure to check out my other projects!
