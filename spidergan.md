@@ -92,6 +92,10 @@ This means that the generator isn't directly trained on the real images - instea
 
 Normally, this wouldn't matter much. However, we are working with augmentations. Augmentations are a way to raise the number of real images the discriminator sees without making a bigger dataset. For example, you can mirror each image, and now you have twice the dataset!
 
+### Warning
+> A lot of the information between here and the next section is *wrong*. I've reached out to others who know more about this than me and they recommended I read one of the papers mentioned in the git issue as well as the papers on StyleGAN1/2. In the section that follows this one, I'll re-examine the claims I made below after reading both papers and getting a better understanding of augmentations. The abstracts for the specific papers I'm reading can be found [here](https://arxiv.org/abs/2002.04724) (Improved Consistency Regularization for GANs) and [here](https://arxiv.org/abs/1912.04958) (Analyzing and Improving the Image Quality of StyleGAN).
+> This section is left in to explain my thought process, and so that I can reflect on what I have learned at a later point in this project.
+
 However, it isn't all that simple. If you only augment the real inputs, then the generator will try to replicate the distortion. Luckily, this is done for both inputs with the colab as far as I can tell. Still, some augmentations aren't helpful in our case. There are several augmentations, which I'll look at one by one.
 
 There are some augments applied batchwise:
