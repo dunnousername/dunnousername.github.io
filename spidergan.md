@@ -127,4 +127,22 @@ It was also recommended that I increase the augmentation probability slightly. S
 
 At first I also thought that `--resume-kimg=$resume_kimg` could be an issue. Earlier versions of StyleGAN(1) were progressive, meaning the kimg count would determine how the model was trained. However, this isn't the case with StyleGAN2's `config-f`.
 
+## A "small" point of reflection (part 2)
+
+After reading and talking about the papers it looks like I was mostly correct on how augmentations work. However, the main issue with augmentations isn't the risk of them bleeding through, but that the loss of information that occurs with augs such as cutout isn't helpful for GANs.
+
+Additionally, some of the aug policies we used are repetitive. Lastly, while talking about the different augments, pdillis mentioned that the color augment generally had issues. In my previous tests I didn't see any issues that seemed to be related to color, and it doesn't really matter what color a spider is, so I decided it was fine to leave this in until I had issues.
+
+Zoom shouldn't cause issues like I thought it would since not that much information is lost and it shouldn't be too extreme that it distorts everything horribly.
+
+`mirrorv` most likely won't cause issues since the generator will still create images that follow the distribution of the training set.
+
+So, the new command should look like this:
+```
+!AUG_PROB=0.7 AUG_POLICY='color,randomzoom,xytrans,mirrorv' python run_training.py --num-gpus=1 --mirror-augment=True 
+--data-dir=/content/drive/My\ Drive/stylegan2-aug-colab/stylegan2/datasets 
+--dataset=buggan_tf256_3 --config=config-f  --res-log=8 --min-h=1 --min-w=1 --resume-pkl=$pkl
+--resume-kimg=$resume_kimg --augmentations=True --metrics=None
+```
+
 (to be continued)
