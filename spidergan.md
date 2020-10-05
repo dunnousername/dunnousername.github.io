@@ -1,8 +1,13 @@
 [(back to projects)](projects.md)
 
-## This is a work in progress!
+## Part 1
 
 ![SpiderGAN](spidergan.png)
+
+> This page is very much a partial experimental log of an experimental project.
+> There were no plans at the beginning because, frankly, I wasn't entirely sure how this worked.
+> As I learned from other experts, the direction of the project rapidly changed, so at times this article can be confusing to read.
+> I plan to write a more refined version of this article in the future. For those interested, the following text shows the experimental nature and thought process of the project.
 
 # SpiderGAN
 ## Introduction
@@ -145,4 +150,14 @@ So, the new command should look like this:
 --resume-kimg=$resume_kimg --augmentations=True --metrics=None
 ```
 
-(to be continued)
+## Some bigger issues (not the end!)
+
+I started training with this new command a few days ago, with similar results to the ones above. However, I'm pretty sure that I will run into a larger issue: dataset.
+My dataset might be too diverse to attempt to train with so few samples. There's essentially two types of spider images:
+
+- "Top-down" images like the image immediately to the right of the bottom left corner image on the real panel. These generally are either hanging from webs where the camera is horizontal, or on a horizontal surface with the camera above the spider and pointing straight down. The camera axis, in more specific terms, is perpendicular to the plane of the spider's legs. Additionally, the spiders usually don't have fuzzy legs or fine details.
+- "Portrait" images like the bottom right corner image of the real panel. These are images of jumping spiders with fuzzy legs. The camera angle is often more-or-less parallel with the plane of the spider's legs, so that the spider's eyes are clearly seen.
+
+Because StyleGAN doesn't inherently understand the concept of 3D space and perspective, the dataset might be too small for it to be able to generalize. The best option would be to either find more data or make a new dataset consisting of images from only one category.
+
+I decided I'd go the route of making a new "portrait" dataset with jumping spiders. Making a new dataset and a new model takes lots of time and lots of patience, though, so this will end up being "part 2." Stay tuned!
