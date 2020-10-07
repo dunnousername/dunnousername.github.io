@@ -9,3 +9,6 @@ Here are some other projects I'm working on:
 
 Additionally, here are some other projects I'm working on that aren't strictly related to machine learning or data science:
 - [m3u8a2](m3u8a2/m3u8a2.md) (download M3U8/HLS playlists in parallel with aria2c)
+
+Lastly, I write a few even less scientific articles. Usually I do this if they wouldn't fit well in a more organized format, but I wanted to talk about them anyway.
+- [R00000 - $10 InfiniBand cards?](random/r00000.md)
