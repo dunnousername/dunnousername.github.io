@@ -5,7 +5,8 @@
 My most well-known project is [first-order-wrapper](first-order-wrapper.md).
 
 Here are some other projects I'm working on:
-- [SpiderGAN](spidergan.md) (work in progress; real and fake spider images are spoilered)
+- [SpiderGAN](spidergan.md) (part 1 is done; part 2 coming soon (TM). real and fake spider images are spoilered)
+- [Analyzing Backblaze Hard Drive Reliability Data](backblaze_drive_stats/backblaze_drive_stats.md) (work in progress!)
 
 Additionally, here are some other projects I'm working on that aren't strictly related to machine learning or data science:
 - [m3u8a2](m3u8a2/m3u8a2.md) (download M3U8/HLS playlists in parallel with aria2c)
