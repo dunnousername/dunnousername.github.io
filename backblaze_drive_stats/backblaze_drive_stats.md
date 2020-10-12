@@ -53,6 +53,9 @@ The vast majority of drives never failed. A handful failed initially, but very f
 
 Backblaze takes a different approach to this problem, which I plan to try to replicate. They compute a total number of drive days, and a total number of drive failures within that time frame, and calculate a per-day failure rate from that.
 
+> I'm committed to providing an accurate, unbiased viewpoint on every article.
+> If you have a suggestion, constructive criticism, or just useful feedback in general, [see here](/contact.md).
+
 I summed up the total number of failures and divided it by the total number of drive days for each manufacturer. Then, the value was multiplied by 365.25 to represent the annualized failure rate.
 The script can be found [here](https://gist.github.com/dunnousername/d196f538012770311399a2e18d6170bf).
 The results are below:
