@@ -43,4 +43,29 @@ Finally, for analyzing reliability by itself (not considering S.M.A.R.T. stats),
 
 All of the scripts listed above require `tqdm` for a nice progress bar, but have no other requirements besides a recent version of Python 3 (3.6-3.8 should be fine).
 
+## The bittersweet truth about modern drives
+
+Here is a plot of the observed failure rates of a somewhat-common drive from Backblaze's server. This model was chosen because it has over a hundred units and was the second entry in the dataset. If the drive is not observed to have failed, it is assumed to have died after 10 years, which is a relative generous assumption.
+
+![Figure 1](figure01.png)
+
+The vast majority of drives never failed. A handful failed initially, but very few afterwards. Modern drives are extremely reliable compared to previous generations, which is great, but it also means we can't make many meaningful observations this way since the drives are usually not old enough to observe failures due to old age.
+
+Backblaze takes a different approach to this problem, which I plan to try to replicate. They compute a total number of drive days, and a total number of drive failures within that time frame, and calculate a per-day failure rate from that.
+
+I summed up the total number of failures and divided it by the total number of drive days for each manufacturer. Then, the value was multiplied by 365.25 to represent the annualized failure rate.
+The script can be found [here](https://gist.github.com/dunnousername/d196f538012770311399a2e18d6170bf).
+The results are below:
+
+
+|   brand | failures | drive_days |         afr |   afr (%) |
+| -------:| --------:| ----------:| -----------:| ---------:|
+|    hgst |      340 |   41873634 | 0.002965709 | 0.2965709 |
+| hitachi |       49 |    4170801 | 0.004291082 | 0.4291082 |
+| seagate |     4911 |  125203054 | 0.014326669 | 1.4326669 |
+|     ssd |       11 |      81879 | 0.049069358 | 4.9069358 |
+| toshiba |      154 |    2430242 | 0.023145226 | 2.3145226 |
+| unknown |        1 |      31279 | 0.011677164 | 1.1677164 |
+|     wdc |      369 |    4954581 | 0.027202553 | 2.7202553 |
+
 **(to be continued)**
