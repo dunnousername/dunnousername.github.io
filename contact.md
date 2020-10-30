@@ -7,7 +7,7 @@ If you would like to talk to me privately about something, additional contact in
     <summary><b>If you have concerns relating to an open-source project I maintain, please file an issue on the corresponding GitHub repository. Do not send spam here.</b> (click me)</summary>
 
     Discord: dunnousername#8672
-
+    Email: henrymatthewl (at) outlook.com
 </details>
 
 If you'd like to sell me something or provide extremely unconstructive criticism, you can send an email [here](mailto:postmaster@dev.null).

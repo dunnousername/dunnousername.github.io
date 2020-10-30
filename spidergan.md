@@ -50,9 +50,9 @@ Originally, I took 1,217 cropped images and started training StyleGAN2. I used d
 
 After a few days of training, at just under 2000 kimg, my results looked this:
 <details>
-  <summary><b>Click to view some fake spiders</b></summary>
+  <summary><b>Click to view some fake spiders (fixed)</b></summary>
   
-  <img src="spidergan_reals.jpg" alt="almost 2000 kimg" />
+  <img src="spidergan_fakes011978.jpg" alt="almost 2000 kimg" />
   
 </details>
 

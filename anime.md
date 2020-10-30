@@ -1,6 +1,8 @@
-Congratulations. This page isn't properly indexed, so you're either extremely lucky to find it or decently clever.
+This page is not properly indexed and likely never will be.
+This isn't at all related to the rest of the blog, so this shouldn't be treated as a blog post.
+If you've found this page, feel free to read through it, but please do not link to it from other sites or contact me about info discussed on this page.
 
-(a lot of the plots are dumbed down a bit, don't @ me.)
+(a lot of the plots are simplified a bit)
 
 # Animes I've watched, in chronological order.
 ## Miss Kobayashi's Dragon Maid (S1E1-S1E7, 7 episodes)
@@ -35,15 +37,9 @@ Honestly, I didn't find it that interesting, but I don't think I really went far
 
 ## Konosuba (S1E1-S1E11, 11 episodes)
 I enjoy Konosuba more than every other anime mentioned above.
-~~It's like Old School Runescape but the thief skill is even better.~~
 Essentially, the plot follows the adventures of a shut-in who died under embarrasing circumstances.
 In the afterlife, he chooses not to go to heaven but to be reincarnated in a magical fantasy world.
 
-There's a lot of stuff in the anime that is... "suggestive," at the very least.
-I wouldn't watch it with my parents, but it's not problematic enough to make me stop watching it or anything.
-
-The main character is powerful and unafraid to command his allies to do fanservicey stuff, and his allies are dumb enough that they rely on him for survival, and will do anything to get something out of him.
-
-For example, one of his allies is a female goddess, and when she is in frame the camera is often located behind her, and above her if she is lying down or below her if she is standing or kneeling.
+I'd recommend listening to what others say about the series, because they have a much better way of explaining it, and I'd rather not undersell it. It's probably closer to Miss Kobayashi's Dragon Maid than any other anime listed here, but it's still quite different.
 
 Overall, I enjoy the dynamics between the characters, and some of the characters act in mysterious ways, which often ends humourously (I'm looking at you, Darkness).
