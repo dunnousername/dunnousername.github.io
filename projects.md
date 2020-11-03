@@ -3,7 +3,7 @@
 ## My projects!
 
 My most well-known project is [first-order-wrapper](first-order-wrapper.md).
-In my opinion, the projects listed below are more interesting, but at the time of this writing, it is still the most popular project I've done.
+In my opinion, any of the projects listed below are more interesting (and have more polish and thought put into them, too), but at the time of this writing, it is still the most popular project I've done.
 
 Here are some other projects I'm working on, with the best ones at the top:
 - [Fitting "Bad Apple!!" losslessly compressed on a 1.44M floppy disk](bad_apple/bad_apple.md) (halfway done)
