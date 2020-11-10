@@ -47,7 +47,7 @@ Most of these attempts were variants of run-length-encoding, with combinations o
 At this point, I wasn't really sure if it was possible. However, then I read about chain coding.
 
 "Chain coding" means encoding only the contours of a region, and describing the contours as a sequence of directions.
-This is analogous to walking around the entire border of a country given only a long list of compass directions to walk (it would be implied that each instruction would be 1 degree of latitude/longitude, for example).
+This is analogous to walking around the entire border of a country given only a long list of compass directions to walk (it would be implied that each instruction would be 1 degree of latitude/longitude, for example). With some cleverness, it may be possible to encode the borders of a country with this method in less bits than compressing a bitmap image of the country's border naively.
 All of the compass directions can be encoded in 3 bits, and since a large portion of the border would be straight line segments, it would compress extremely well too.
 In practice, I used 4 bits instead of 3 bits, one for each compass direction, to make my life easier.
 Additionally, I used only 4 bits out of every byte. At first, this may seem like a waste of space, but 
@@ -75,5 +75,17 @@ At this point I decided that the best way to ensure that I keep bugs out of both
 My plan was originally to restructure the code from version 1.1.0 before releasing it. However, 1.1.0 isn't usable, so I won't be releasing restructured code for it.
 
 These are the plans I have for version 2.0.0. In the meantime, if you'd like, you can download a version of 1.1.0 [here](https://cdn.discordapp.com/attachments/724023422224695307/773272977361731614/full.img).
+
+## Version 2.0.0
+
+Version 2.0.0 (called 1.1.0 in the source since it is still being developed) is a complete overhaul of the build process, compression algorithm and encoder.
+
+It doesn't work correctly at the time of this writing, but can be found [here](https://github.com/dunnousername/BadAppleFloppy).
+
+The build process uses Makefiles to compile and run the encoder and compile the final image.
+
+The modified compression algorithm uses a public domain implementation of xzip instead of zlib; this achieves a higher compression ratio at the cost of a higher compression and decompression time.
+
+The format of the chain coding file was also overhauled; directions are represented in a format where neighboring directions are consecutive integers (mod 8). Additionally, external contours of both the negative and positive image are stored, making the output slightly larger, but it prevents me having to rewrite a complicated `findContours` function in C. No floodfill points are stored, except the value of the top left corner of the image, so that colors of certain parts of the image can be derived.
 
 (to be continued)
