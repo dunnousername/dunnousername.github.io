@@ -1,5 +1,5 @@
 (Contact information and information that could be used to determine exact location here is removed; if you need to get in touch, see [here](contact.md).)
-Last updated: October 30th, 2020
+Last updated: January 12th, 2021
 
 ## Henry Leonard
 
@@ -8,8 +8,10 @@ Last updated: October 30th, 2020
 **Education:** (information redacted for privacy reasons; contact for more information.)
 
 ### Achievements
-- National Merit Scholarship Class of 2021 Semifinalist
+- National Merit Scholarship Class of 2021 Finalist
 - Mu Alpha Theta Honors Society (2018, 2019, 2020)
+- 4th (out of 61 teams) in Cybersecurity at Yale University Undergraduate Science Olympiad (2021)
+  - [Learn more about Science Olympiad events](scioly.md)
 - 1st in Circuit Lab at Sacred Heart University Division C Science Olympiad (2020)
 - 4th (out of 48 teams) in Circuit Lab at UCONN Division C Science Olympiad (2019)
 - Medals of Excellence:
@@ -19,7 +21,7 @@ Last updated: October 30th, 2020
 - Various machine learning and data science projects at [https://dunnousername.github.io/projects.html](https://dunnousername.github.io/projects.html)
 
 ### Activities
-- Science Olympiad (Grades 10, 11)
+- Science Olympiad (Grades 10, 11, 12)
 - Mathletes (Grades 9, 10)
 - Gender Sexuality Alliance Club (Grade 9)
 - Interact Club (Grade 10)
