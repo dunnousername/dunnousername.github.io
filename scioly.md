@@ -1,4 +1,4 @@
-Last updated: January 12th, 2021
+Last updated: February 12th, 2021
 
 ## Science Olympiad
 

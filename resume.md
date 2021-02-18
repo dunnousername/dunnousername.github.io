@@ -1,5 +1,5 @@
 (Contact information and information that could be used to determine exact location here is removed; if you need to get in touch, see [here](contact.md).)
-Last updated: January 12th, 2021
+Last updated: February 12th, 2021
 
 ## Henry Leonard
 
