@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>Sell me something... ???</title>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="jumbotron">
+                <h1 class="display-4">Sell me something...</h1>
+                <form>
+                    <div class="form-group">
+                        <select name="what" id="what-select" class="form-control">
+                            <option value="random" selected>Random</option>
+                            <option value="expensive">Expensive</option>
+                            <option value="stupid">Stupid</option>
+                            <option value="radioactive">Radioactive</option>
+                            <option value="bright">Bright</option>
+                            <option value="alive">Alive</option>
+                            <option value="edgy">Edgy</option>
+                            <option value="unscientific">Unscientific</option>
+                            <option value="bees">Bees</option>
+                            <option value="flammable">Extremely Flammable</option>
+                            <option value="heavy">Very Heavy</option>
+                            <option value="leaky">Leaky</option>
+                            <!--<option value="excessive">Excessive</option>-->
+                            <option value="lethal" data-settings-requires-nsfw>Lethal (NSFW)</option>
+                            <option value="soft">Soft</option>
+                            <option value="nerdy">Nerdy</option>
+                            <option value="usb">USB</option>
+                            <option value="degenerate" data-settings-requires-nsfw>Degenerate (NSFW)</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-lg" id="go-btn">Go!</button>
+                </form>
+            </div>
+            <div class="alert alert-info">
+                <p>
+                    Disclaimer: This site does not endorse, promote, or otherwise associate with the products or views held on the sites that it links to.
+                </p>
+                <p>
+                    We can't guarantee that the following outcomes will or will not happen after visiting a linked site:
+                </p>
+                <ul>
+                    <li>You order something and get exactly what you ordered</li>
+                    <li>You order something and get something different</li>
+                    <li>You order something and immediately get swallowed by giant man-eating tarantulas</li>
+                    <li>You decide not to order anything and still get swallowed by giant man-eating tarantulas</li>
+                    <li>Before you can decide, you get swallowed by giant man-eating tarantulas anyway</li>
+                </ul>
+            </div>
+            <div class="alert alert-warning" data-settings-requires-nsfw>
+                Your current site settings allow links adult content.
+            </div>
+            <a id="settings-anchor"></a>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script data-settings="user" src="../settings/settings.js"></script>
+        <script>
+            $(document).ready(function(){
+                options = {
+                    'expensive': [
+                        'https://www.rwmmint.com/collections/frontpage/products/osmium',
+                        'https://tvtropes.org/pmwiki/pmwiki.php/Main/Nanomachines',
+                        'https://www.labx.com/mass-spectrometer',
+                        'http://www.buyaerogel.com/'
+                    ],
+                    'stupid': [
+
+                    ],
+                    'radioactive': [
+                        'https://unitednuclear.com/index.php?main_page=index&cPath=2_4',
+                        'https://www.ebay.co.uk/itm/324458938513',
+                        'https://www.ebay.com/itm/Tritium-Precore-Interchangeable-Fob-Mid-Size-Tritium-Keychain-USA-SELLER/402621680689',
+                        'https://www.ebay.com/itm/Metal-Geiger-Counter-Check-Test-Source-Smoke-Detector-Sensor-Americium-HIGH/383511400976'
+                    ],
+                    'bright': [
+                        'http://www.spectrolab.com/searchlights/products/prod_sx16_ns.html',
+                        'https://www.aliexpress.com/item/32829354250.html',
+                        'https://uk.rs-online.com/web/p/cob-leds/8119593/'
+                    ],
+                    'alive': [
+                        'https://www.exotic-pets.co.uk/fort-hall-baboon.html',
+                        'https://www.reptilecentre.com/info-animal-list',
+                        'https://www.antsalive.com/buy-live-ants.htm',
+                        'https://www.backwaterreptiles.com/snakes/snakes-for-sale.html'
+                    ],
+                    'edgy': [
+                        'https://www.amazon.com/Rust-Oleum-1974502-Painters-Touch-1-Quart/dp/B000BZX6SW',
+                        'https://www.amazon.com/Leather-Necklace-colares-gargantilha-Jewelry/dp/B078RKTXKH',
+                    ],
+                    'unscientific': [
+
+                    ],
+                    'bees': [
+                        'https://mountainsweethoney.com/bees/',
+                        'https://crystalsrawhoney.com/collections/bulk-honey-1/products/10lb-raw-honey-pail-ships-free',
+                        'https://xkcd.com/1439/',
+                        'https://www.ohbees.com/collections/hobby-day-package-bees/products/package-bees-italian'
+                    ],
+                    'flammable': [
+                        'https://www.grainger.com/product/16N106',
+                        'https://buysinopec.com/products/conventional-diesel-engine-oil',
+                        'https://www.overstockcentralfireworks.com/aerials/1500-gram-finale-series-1.html',
+                        'https://www.midwayusa.com/black-powder/br?cid=23963'
+                    ],
+                    'heavy': [
+                        'https://www.amazon.com/Happybuy-Blacksmith-Equipment-Jewelers-Metalsmith/dp/B075YSCQ4Q',
+                        'https://www.metalsdepot.com/steel-products/high-strength-steel-plate/steel-plate-armor-plate-46100',
+                        'https://www.laballey.com/products/mercury-metal-high-purity-lab-grade-symbol-hg-metallic-mercury-liquid-mercury-1-lb',
+                        'https://www.amazon.com/gp/product/B00NZCS53Y/'
+                    ],
+                    'leaky': [
+
+                    ],
+                    'lethal': [
+                        
+                    ],
+                    'soft': [
+                        'https://www.ebay.com/itm/203036222610',
+                        'https://www.grainger.com/product/34DA14',
+                        'https://www.amazon.com/Joyfay-Giant-Teddy-Light-Brown/dp/B00580J2WY'
+                    ],
+                    'nerdy': [
+                        'https://www.amazon.com/Manga-Guide-Microprocessors-Michio-Shibuya/dp/1593278179',
+                        'http://www.networksorcery.com/enp/default0501.htm',
+                        'https://www.nvidia.com/en-us/data-center/dgx-2/',
+                        'https://cdn.discordapp.com/attachments/426054105577029654/808108226931458088/hardware-html5.jpg'
+                    ],
+                    'usb': [
+                        'https://www.amazon.com/Water-Bottle-Pump-Gallon-CHIVENIDO/dp/B07YQXTLCZ',
+                        'https://www.amazon.com/Logitech-Trackman-Marble-Four-Button-Programmable/dp/B001F42MKG/',
+                        'https://www.amazon.com/Printer-NIMASO-Scanner-Compatible-Lexmark/dp/B088FK2XTV',
+                        'https://www.amazon.com/Extreme-3D-Pro-Joystick-Windows/dp/B00009OY9U',
+                        'https://www.amazon.com/Honbay-Semitransparent-Plastic-Anti-Dust-Stopper/dp/B06Y6778RB',
+                        'https://www.amazon.com/Tendak-USB-Floppy-Disk-Drive/dp/B01NCV01GY'
+                    ],
+                    'degenerate': [
+
+                    ]
+                };
+
+                nsfw_options = {
+                    'flammable': [
+                        'https://www.amazon.com/Warming-Water-Based-Body-Glide-Gallon/dp/B083V68RPP'
+                    ],
+                    'leaky': [
+
+                    ],
+                    'lethal': [
+                        'https://www.genscript.com/RNA_Oligo.html',
+                        'https://www.amazon.com/siwode-Handmade-£¬Japanese-Samurai-40-Inch/dp/B07CKB3ZFR',
+                        'https://www.drivetanks.com/own-one/',
+                        'https://www.toolstoday.com/v-7105-618540.html'
+                    ],
+                    'soft': [
+                        'https://www.animelovepillow.com/'
+                    ],
+                    'usb': [
+                        'https://www.amazon.com/KingL-Personal-Massager-Women-Vibrations/dp/B07WT4XJTR'
+                    ],
+                    'degenerate': [
+                        /* yes, I know it's in multiple categories */
+                        'https://www.animelovepillow.com/',
+                        'https://www.amazon.com/French-Cosplay-Sleeve-Outfit-Clubwear/dp/B08PXJT6VW',
+                        'https://www.amazon.com/Lolita-Stainless-Multicolored-Headband-Cosplay/dp/B08WQ18FFK',
+                        'https://www.ebay.com/itm/184659999978',
+                        'https://en.hololive.tv/goods'
+                    ]
+                };
+
+                if (window.settings.nsfw) {
+                    for (const key of Object.keys(nsfw_options)) {
+                        if (!(key in options)) {
+                            options[key] = [];
+                        }
+
+                        options[key].push(...nsfw_options[key]);
+                    }
+                }
+
+                random_options = [];
+
+                for (const key of Object.keys(options)) {
+                    random_options.push(...options[key]);
+                }
+
+                options['random'] = random_options;
+
+                $('#go-btn').click(function(){
+                    choices = options[$('#what-select').val()];
+                    if (choices && choices.length) {
+                        choice = choices[Math.floor(Math.random() * choices.length)];
+                        window.open(choice, '_blank').focus();
+                    } else {
+                        alert('no options for category');
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>

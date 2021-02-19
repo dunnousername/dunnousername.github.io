@@ -2,7 +2,7 @@
 
 ## My projects!
 
-(Last updated: January 23rd, 2021.)
+(Last updated: February 18th, 2021.)
 
 My most well-known project is [first-order-wrapper](first-order-wrapper.md).
 In my opinion, any of the projects listed below are more interesting (and have more polish and thought put into them, too), but at the time of this writing, it is still the most popular project I've done.
@@ -22,3 +22,5 @@ Also, I write a few even less scientific articles. Usually I do this if they wou
 - [R00000 - $10 InfiniBand cards?](random/r00000.md)
 
 Finally, I have a list of things I plan to do [here](queue.md).
+
+P.S. [Here's](games/games.md) a bunch of games and silly things I make.
