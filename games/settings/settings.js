@@ -16,7 +16,7 @@
     }
 
     $(document).ready(function(){
-        $('#settings-anchor').attr('href', '../settings/settings.html').text('This applet uses site-wide advanced settings, which can be configured here.');
+        $('#settings-anchor').attr('href', '../settings/settings').text('This applet uses site-wide advanced settings, which can be configured here.');
         
         settings = {
             'nsfw': false
