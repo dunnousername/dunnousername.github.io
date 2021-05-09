@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on rfspine</title>
+    <link>https://www.rfspine.net/posts/</link>
+    <description>Recent content in Posts on rfspine</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 08 May 2021 18:41:23 +0000</lastBuildDate><atom:link href="https://www.rfspine.net/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>containers: what are they?</title>
+      <link>https://www.rfspine.net/posts/containers/intro/</link>
+      <pubDate>Sat, 08 May 2021 18:41:23 +0000</pubDate>
+      
+      <guid>https://www.rfspine.net/posts/containers/intro/</guid>
+      <description>You might&amp;rsquo;ve heard about &amp;ldquo;containerization,&amp;rdquo; or about Docker, or Kubernetes, or various other pieces of software.
+It&amp;rsquo;s a really neat technology, but it&amp;rsquo;s also become somewhat of a buzzword. As someone who uses containers on a regular basis, I don&amp;rsquo;t believe that everyone can benefit from containers. However, I believe everyone can benefit from knowing what containers are.
+What are containers? Containers are a way of running services. This is really the most important aspect to understand.</description>
+    </item>
+    
+    <item>
+      <title>page0</title>
+      <link>https://www.rfspine.net/posts/page0/</link>
+      <pubDate>Fri, 07 May 2021 22:08:22 +0000</pubDate>
+      
+      <guid>https://www.rfspine.net/posts/page0/</guid>
+      <description>And so it begins.
+page0 page0 is the first page. I guess that technically means there are negative pages, but those aren&amp;rsquo;t up on this site (yet?).
+Technical This site is yet another iteration of my personal blog.
+It&amp;rsquo;s currently based on the base16 hugo theme. There will likely be more details on the hardware and software in the future, but for now, this is a simple test page only.</description>
+    </item>
+    
+  </channel>
+</rss>

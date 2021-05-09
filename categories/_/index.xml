@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>_ on rfspine</title>
+    <link>https://www.rfspine.net/categories/_/</link>
+    <description>Recent content in _ on rfspine</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 07 May 2021 22:08:22 +0000</lastBuildDate><atom:link href="https://www.rfspine.net/categories/_/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>page0</title>
+      <link>https://www.rfspine.net/posts/page0/</link>
+      <pubDate>Fri, 07 May 2021 22:08:22 +0000</pubDate>
+      
+      <guid>https://www.rfspine.net/posts/page0/</guid>
+      <description>And so it begins.
+page0 page0 is the first page. I guess that technically means there are negative pages, but those aren&amp;rsquo;t up on this site (yet?).
+Technical This site is yet another iteration of my personal blog.
+It&amp;rsquo;s currently based on the base16 hugo theme. There will likely be more details on the hardware and software in the future, but for now, this is a simple test page only.</description>
+    </item>
+    
+  </channel>
+</rss>
