@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="generator" content="Hugo 0.83.1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="rfspine">
+<title>containers: what are they? - rfspine</title>
+</head>
+<body>
+
+<header>
+  <div class="container clearfix">
+    <a class="path" href="https://www.rfspine.net/">[rfspine]</a>
+    <span class="caret"># _</span>
+    <div class="right">
+      
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+
+<main role="main" class="article">
+  
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2021-05-08">May 08, 2021</time></span>
+
+
+    <span class="key">in</span>
+    <span class="val">
+
+        <a href="/categories/explainer">explainer</a>
+
+    </span>
+
+
+    <br>
+    <span class="key">tags:</span>
+    <span class="val">
+
+        <a href="/tags/software">software</a>
+
+        <a href="/tags/containers">containers</a>
+
+        <a href="/tags/docker">docker</a>
+
+        <a href="/tags/explainer">explainer</a>
+
+    </span>
+
+  </div>
+  <h1 class="headline" itemprop="headline">containers: what are they?</h1>
+  <section class="body" itemprop="articleBody">
+    <p>You might&rsquo;ve heard about &ldquo;containerization,&rdquo; or about Docker, or Kubernetes, or various other pieces of software.<br>
+It&rsquo;s a really neat technology, but it&rsquo;s also become somewhat of a buzzword.
+As someone who uses containers on a regular basis, I don&rsquo;t believe that everyone can benefit from containers.
+However, I believe everyone can benefit from knowing what containers are.</p>
+<h2 id="what-are-containers">What are containers?</h2>
+<p>Containers are a way of running services. This is really the most important aspect to understand.</p>
+<p>The services themselves don&rsquo;t change.
+A web server in a container will serve the same pages as a web server outside of a container, provided they are setup in the way.</p>
+<p>However, services running in containers have a hierarchy. Each container is like it&rsquo;s own <a href="https://en.wikipedia.org/wiki/The_Truman_Show#Plot">Truman Show</a>, where the services (people) run independently of the outside world.
+Unlike the Truman Show, however, none of the services move freely in and out. Everyone is Truman.</p>
+<p>This may seem like a bad idea at first, but it allows for some interesting consequences:</p>
+<ul>
+<li>Processes within the container don&rsquo;t depend on a certain configuration for the host. Containers will always run the same.</li>
+<li>Because everything a container sees is managed by the runtime instead of the operating system, the behavior of the container is easier to modify. This is like changing the weather on our movie set. In practice, it&rsquo;s usually things like providing credentials to containers without making a new image.</li>
+<li>To some degree, it provides security, since if a container is compromised, it can only access a very small number of resources (unless the runtime or operating system is vulnerable)</li>
+<li>Compared to virtual machines, it is much lighter, since the guest doesn&rsquo;t need a kernel, which is one of the real benefits.</li>
+</ul>
+<h3 id="container-runtimes">Container runtimes</h3>
+<p>Container runtimes are programs that make and manage containers.
+The most popular one is probably <a href="https://www.docker.com/">Docker</a>, but others exist.
+I will focus on the Docker ecosystem in this post, since it is the one I&rsquo;m most familiar with.</p>
+<p>Docker, and pretty much all other container systems, run services as &ldquo;images.&rdquo;
+These images contain information on how to launch the service.
+They include configuration files, data files, software libraries, and the service itself.</p>
+<p>The utility of a container system comes from the images.
+Images can extend other images; for example the Docker <a href="https://github.com/docker-library/wordpress/blob/master/latest/php8.0/apache/Dockerfile">Wordpress</a> image is based off of the <a href="https://github.com/docker-library/php/blob/master/8.0/buster/apache/Dockerfile">PHP</a> image, which is based off of the <a href="https://github.com/debuerreotype/docker-debian-artifacts/blob/0590e3720f7f87992202bfcca4c13c374ff304bc/buster/slim/Dockerfile">Debian</a> image.</p>
+<p>All of those images are maintained by Docker, and if Debian gets a security update, it will go down the line and be integrated into the Wordpress and PHP images.</p>
+<p>If, for example, I wanted to make a Wordpress image with a different default theme, I could extend the Wordpress image and replace some files, and my image would automatically update whenever Wordpress updated, provided I rebuilt the images (they can&rsquo;t update while running).</p>
+<p>Importantly, images don&rsquo;t store changes when you run them. If you restart your Wordpress container without configuring a location to save important files to, you will have to setup Wordpress again afterwards.</p>
+<p>Fortunately, Docker has a way to configure this. You can mount folders between a container and a host.
+For example, this site runs a static website where a mount exists between <code>/srv</code> on the container and the directory containing the webpages on the host (<code>/mnt/btrfs/code/web/...</code> or something). So, when I update the webpages, the image doesn&rsquo;t need to be rebuilt, and I don&rsquo;t even have to restart the container! Amazing!</p>
+<p>Of course, most things you would do on a server aren&rsquo;t as simple as a static web server.</p>
+<p>You might have a web app written with Django that serves a payroll system.
+In that case, you&rsquo;d likely need to build your own image, possibly extending the <a href="https://hub.docker.com/_/python/">Python image</a>.</p>
+<p>Still, there are even more complicated scenarios. Perhaps you have several different services that all need to talk to each other; maybe you have a web app that needs to be able to update records on a DNS server, and you want the whole thing to automatically generate SSL certificates automatically. It might even be more complex than that, or involve several different physical machines.</p>
+<p>Fortunately, this is actually where Docker begins to shine.</p>
+<h3 id="multi-container-applications">Multi-container applications</h3>
+<p>Docker in particular has rich support for multi-container applications. In particular, <a href="https://docs.docker.com/compose/">docker-compose</a> is the official tool for creating them.</p>
+<p>With docker-compose, you can define many different services, and link them together using networks.
+By default, all the containers defined in one compose application will be able to talk to each other, but none of them will be able to talk to containers not in that compose application.</p>
+<p>Below is an example configuration file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">services</span>:
+    <span style="color:#f92672">caddy</span>:
+        <span style="color:#75715e"># use the latest official Caddy image.</span>
+        <span style="color:#75715e"># Caddy provides automatic TLS using Let&#39;s Encrypt.</span>
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">caddy:latest</span>
+        <span style="color:#75715e"># restart on crash unless explicitly stopped</span>
+        <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+        <span style="color:#f92672">volumes</span>:
+            <span style="color:#75715e"># the Caddyfile is the configuration for Caddy.</span>
+            <span style="color:#75715e"># not included in this example.</span>
+            - <span style="color:#ae81ff">./Caddyfile:/etc/caddy/Caddyfile</span>
+            <span style="color:#75715e"># Caddy needs some persistent volumes to work</span>
+            - <span style="color:#ae81ff">caddy_data:/data</span>
+            - <span style="color:#ae81ff">caddy_config:/config</span>
+        <span style="color:#f92672">ports</span>:
+            <span style="color:#75715e"># expose ports on the host so we can connect from outside</span>
+            <span style="color:#75715e"># HTTP</span>
+            - <span style="color:#e6db74">&#34;80:80&#34;</span>
+            <span style="color:#75715e"># HTTPS</span>
+            - <span style="color:#e6db74">&#34;443:443&#34;</span>
+    <span style="color:#f92672">varnish</span>:
+        <span style="color:#75715e"># use the latest official Varnish image.</span>
+        <span style="color:#75715e"># Varnish is a super fast HTTP cache that powers some of the</span>
+        <span style="color:#75715e"># largest sites in the world.</span>
+        <span style="color:#75715e"># We&#39;ll use it to cache responses from our hypothetical web app</span>
+        <span style="color:#f92672">image</span>: <span style="color:#ae81ff">varnish:latest</span>
+        <span style="color:#75715e"># restart on crash unless explicitly stopped</span>
+        <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+        <span style="color:#f92672">volumes</span>:
+            <span style="color:#75715e"># the Varnish config file.</span>
+            <span style="color:#75715e"># not included in this example.</span>
+            - <span style="color:#ae81ff">./default.vcl:/etc/varnish/default.vcl</span>
+        <span style="color:#f92672">expose</span>:
+            <span style="color:#75715e"># allow Caddy to connect to these ports as a reverse proxy</span>
+            - <span style="color:#ae81ff">80</span>
+    <span style="color:#f92672">webapp</span>:
+        <span style="color:#75715e"># docker-compose can also build images.</span>
+        <span style="color:#75715e"># our webapp will have a Dockerfile located at</span>
+        <span style="color:#75715e"># ./webapp/Dockerfile</span>
+        <span style="color:#f92672">build</span>: <span style="color:#ae81ff">./webapp</span>
+        <span style="color:#75715e"># restart on crash unless explicitly stopped</span>
+        <span style="color:#f92672">restart</span>: <span style="color:#ae81ff">unless-stopped</span>
+        <span style="color:#f92672">expose</span>:
+            <span style="color:#75715e"># allow Varnish to connect to the webapp.</span>
+            - <span style="color:#ae81ff">80</span>
+<span style="color:#f92672">volumes</span>:
+    <span style="color:#f92672">caddy_data</span>: <span style="color:#75715e"># docker manages this</span>
+    <span style="color:#f92672">caddy_config</span>: <span style="color:#75715e"># docker manages this</span>
+</code></pre></div><p>This may seem daunting at first, but don&rsquo;t worry.</p>
+<p>There are three services here:</p>
+<ul>
+<li>Caddy, our web server with automatic TLS. This is the only service connected to the outside world. It also has two Docker-managed mounts (named volumes) to cache its SSL certificates and such.</li>
+<li>Varnish, our cache server. In many cases the same few pages are requested from the web server, and it would be inefficient to have the web app generate a new response each time. While not completely necessary, Varnish caches these requests.</li>
+<li><code>webapp</code>, our theoretical web app. It exposes a server on port 80 to Varnish, and Varnish will proxy requests to it.</li>
+</ul>
+<p>This theoretical server could be run with <code>sudo docker-compose up -d</code> in the directory where the <code>docker-compose.yml</code> file is.</p>
+<p>Using docker-compose as well as some normal containers, <code>tokamak</code> runs 21 different containers on about 2.5GiB of memory, including operating system overhead. Your results may vary, especially when using more resource-intensive containers such as databases.</p>
+<h3 id="when-not-to-use-containers">When not to use containers</h3>
+<p>Admittedly, containers are not a catch-all solution. There are many cases where containers lack utility or could even be considered harmful.</p>
+<h4 id="on-windows">On Windows</h4>
+<p>Most (Docker) containers are designed to be run on Linux. Most of them won&rsquo;t work on Windows, and even the ones that do might lack certain complex runtime features.</p>
+<h4 id="when-you-require-low-level-access">When you require low-level access</h4>
+<p>Containers are designed for &ldquo;normal&rdquo; programs that spend most of their time in userspace and don&rsquo;t require special facilities from the kernel.</p>
+<p>If your services require odd things, such as GPU acceleration or userspace networking with tun/tap devices, containers might not be the best option. I&rsquo;ve never tried GPU acceleration in containers, but I don&rsquo;t think it will work well. tun/tap devices were finnicky last I tried them, and services that normally require a graphical user interface to be displayed on the host shouldn&rsquo;t be put inside containers.</p>
+<p>Containers are meant to sit between the kernel and the processes, so processes that require these sort of advanced functions directly from the kernel don&rsquo;t always work well and are against the principles of containerization.</p>
+<h4 id="in-place-of-virtual-machines-sometimes">In place of virtual machines (sometimes)</h4>
+<p>Virtual machines and containers can be used for similar things but are fundamentally different.</p>
+<p>Virtual machines offer a higher level of sandboxing than containers, and so this should be considered when thinking about moving to containers. This may or may not be important to you.</p>
+<p>If a vulnerability is discovered in the container runtime, it could cause resources to leak between the host and a container, or between multiple containers. This is less likely to occur with virtual machines, but they are architecturally different and so your results may vary.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Containers are an amazing piece of technology, and I believe every systems administrator and computer hobbyist should know about them.</p>
+<p>They&rsquo;ve allowed me to more easily manage a lot of my projects, and they are also a great way to learn about new software and experiment with new technologies in some cases.</p>
+<p>A tool becomes more powerful the more you learn to use it, though, so I highly recommend experimenting with these things yourself.</p>
+<p>Good luck!</p>
+
+  </section>
+</article>
+
+</main>
+
+</div>
+
+<footer>
+  <div class="container">
+    <span class="copyright">&copy; 2021 rfspine - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+

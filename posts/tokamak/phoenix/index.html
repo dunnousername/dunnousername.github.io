@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="generator" content="Hugo 0.83.1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
+<link rel="alternate" href="/index.xml" type="application/rss+xml" title="rfspine">
+<title>tokamak: from the ashes - rfspine</title>
+</head>
+<body>
+
+<header>
+  <div class="container clearfix">
+    <a class="path" href="https://www.rfspine.net/">[rfspine]</a>
+    <span class="caret"># _</span>
+    <div class="right">
+      
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+
+<main role="main" class="article">
+  
+<article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="meta">
+
+    <span class="key">published on</span>
+    <span class="val"><time itemprop="datePublished" datetime="2021-05-07">May 07, 2021</time></span>
+
+
+    <span class="key">in</span>
+    <span class="val">
+
+        <a href="/categories/servers">servers</a>
+
+    </span>
+
+
+    <br>
+    <span class="key">tags:</span>
+    <span class="val">
+
+        <a href="/tags/server">server</a>
+
+        <a href="/tags/hardware">hardware</a>
+
+        <a href="/tags/software">software</a>
+
+        <a href="/tags/tokamak">tokamak</a>
+
+        <a href="/tags/infrastructure">infrastructure</a>
+
+    </span>
+
+  </div>
+  <h1 class="headline" itemprop="headline">tokamak: from the ashes</h1>
+  <section class="body" itemprop="articleBody">
+    <p><code>tokamak</code> wasn&rsquo;t a new build. It comes from an older system, one with sentimental value, and it inherits this.</p>
+<h2 id="from-the-ashes-rise-a-new-server">From the ashes rise a new server</h2>
+<p>Pretty much only the motherboard was the same.
+It was a socket LGA 1155, and I upgraded from a Celeron G1620 to a Xeon E3-1220 V2, which isn&rsquo;t even supported on this entry-level motherboard, but somehow worked after adding a discrete GPU in the x1 slot.</p>
+<p>I installed Artix Linux on it at the suggestion of someone I knew.</p>
+<p>It has a large 6TB btrfs partition spread across two 6TB HGST drives in software RAID 1. I used an LSI 9240-8i flashed as an old host-bus adapter to connect the drives. The partition was initially fully encrypted, but that was a horrible idea and I don&rsquo;t recommend it.</p>
+<p><code>tokamak</code> is likely serving this site right now. We&rsquo;ll see how long I can take this system with me.</p>
+<p>Neofetch:</p>
+<pre><code>[dunno@tokamak ~]$ neofetch
+                   '                      dunno@tokamak
+                  'o'                     -------------
+                 'ooo'                    OS: Artix Linux x86_64
+                'ooxoo'                   Host: MS-7788 1.0
+               'ooxxxoo'                  Kernel: 5.11.1-artix1-1
+              'oookkxxoo'                 Uptime: 20 days, 2 hours, 13 mins
+             'oiioxkkxxoo'                Packages: 430 (pacman)
+            ':;:iiiioxxxoo'               Shell: bash 5.1.4
+               `'.;::ioxxoo'              Terminal: /dev/pts/0
+          '-.      `':;jiooo'             CPU: Intel Xeon E3-1220 V2 (4) @ 3.10
+         'oooio-..     `'i:io'            GPU: NVIDIA Quadro NVS 290
+        'ooooxxxxoio:,.   `'-;'           Memory: 2007MiB / 3884MiB
+       'ooooxxxxxkkxoooIi:-.  `'
+      'ooooxxxxxkkkkxoiiiiiji'
+     'ooooxxxxxkxxoiiii:'`     .i'
+    'ooooxxxxxoi:::'`       .;ioxo'
+   'ooooxooi::'`         .:iiixkxxo'
+  'ooooi:'`                `'';ioxxo'
+ 'i:'`                          '':io'
+'`                                   `'
+
+[dunno@tokamak ~]$
+</code></pre>
+  </section>
+</article>
+
+</main>
+
+</div>
+
+<footer>
+  <div class="container">
+    <span class="copyright">&copy; 2021 rfspine - <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
+
